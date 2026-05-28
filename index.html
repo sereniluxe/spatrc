@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SereniLuxe Spa & Belleza | Coahuila</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <style>
+        :root {
+            --beige: #f8f1e9;
+            --gold: #d4af88;
+            --dark: #3a2f2f;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Playfair Display', serif;
+            background-color: var(--beige);
+            color: var(--dark);
+            line-height: 1.6;
+        }
+        
+        /* HEADER */
+        header {
+            background: rgba(248, 241, 233, 0.98);
+            backdrop-filter: blur(10px);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+        }
+        
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .logo img {
+            height: 55px;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: var(--gold);
+        }
+        
+        /* Hamburger Menu */
+        .hamburger {
+            display: none;
+            font-size: 1.8rem;
+            cursor: pointer;
+            color: var(--dark);
+        }
+        
+        /* HERO */
+        .hero {
+            min-height: 100vh;
+            background: linear-gradient(rgba(0,0,0,0.35), rgba(0,0,0,0.45)), 
+                        url('https://images.unsplash.com/photo-1600335895229-0e8d0d7f5e3c?ixlib=rb-4.0.3&auto=format&fit=crop&q=80') center/cover no-repeat;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            padding-top: 80px;
+        }
+        
+        .hero-content {
+            max-width: 700px;
+            padding: 2rem 5%;
+        }
+        
+        .hero h1 {
+            font-size: clamp(2.2rem, 8vw, 3.8rem);
+            margin-bottom: 1rem;
+            line-height: 1.1;
+        }
+        
+        .hero p {
+            font-size: clamp(1.1rem, 4vw, 1.4rem);
+            margin-bottom: 2rem;
+        }
+        
+        .btn {
+            padding: 14px 32px;
+            border-radius: 50px;
+            font-weight: bold;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            transition: all 0.3s;
+        }
+        
+        .btn-gold {
+            background: var(--gold);
+            color: white;
+        }
+        
+        .btn-whatsapp {
+            background: #25D366;
+            color: white;
+        }
+        
+        .btn:hover {
+            transform: translateY(-5px);
+        }
+        
+        /* SECTIONS */
+        section {
+            padding: 80px 5%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        h2 {
+            text-align: center;
+            font-size: clamp(2rem, 6vw, 2.8rem);
+            margin-bottom: 3rem;
+            color: var(--dark);
+        }
+        
+        /* Servicios */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 1.5rem;
+        }
+        
+        .service-card {
+            background: white;
+            padding: 2rem 1.5rem;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            transition: all 0.3s;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.12);
+        }
+        
+        .service-icon {
+            width: 75px;
+            height: 75px;
+            background: var(--gold);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            font-size: 2.2rem;
+        }
+        
+        /* Formulario */
+        .booking {
+            background: linear-gradient(135deg, #f8f1e9, #e8d9c9);
+        }
+        
+        .form-container {
+            max-width: 650px;
+            margin: 0 auto;
+            background: white;
+            padding: 2.5rem 2rem;
+            border-radius: 25px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+        }
+        
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 1.4rem;
+        }
+        
+        input, select, textarea {
+            padding: 15px 18px;
+            border: 1px solid #ddd;
+            border-radius: 12px;
+            font-size: 1.05rem;
+        }
+        
+        .submit-btn {
+            background: var(--gold);
+            color: white;
+            padding: 16px;
+            font-size: 1.2rem;
+            cursor: pointer;
+            border: none;
+            border-radius: 50px;
+            margin-top: 10px;
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: #f8f1e9;
+            text-align: center;
+            padding: 3rem 5%;
+        }
+        
+        .gold-line {
+            height: 3px;
+            background: linear-gradient(to right, transparent, var(--gold), transparent);
+            margin: 2rem 0;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: rgba(248, 241, 233, 0.98);
+                flex-direction: column;
+                padding: 1rem 0;
+                box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            }
+            
+            .nav-links.active {
+                display: flex;
+            }
+            
+            .hamburger {
+                display: block;
+            }
+            
+            .hero {
+                min-height: 85vh;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- HEADER -->
+    <header>
+        <nav>
+            <div class="logo">
+                <img src="logo.png" alt="SereniLuxe Logo">
+                <div>
+                    <h2 style="font-size: 1.7rem; margin:0;">SERENILUXE</h2>
+                    <p style="font-size: 0.85rem; color: #d4af88; margin:0;">SPA & BELLEZA</p>
+                </div>
+            </div>
+            
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#inicio">Inicio</a></li>
+                <li><a href="#servicios">Servicios</a></li>
+                <li><a href="#reservar">Reservar</a></li>
+                <li><a href="#contacto">Contacto</a></li>
+            </ul>
+            
+            <div style="display:flex; gap:10px; align-items:center;">
+                <a href="https://wa.me/528714122593" target="_blank" class="btn btn-whatsapp">
+                    <i class="fab fa-whatsapp"></i>
+                </a>
+                <div class="hamburger" id="hamburger">☰</div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- HERO -->
+    <section id="inicio" class="hero">
+        <div class="hero-content">
+            <img src="logo.png" alt="SereniLuxe" style="height: 110px; margin-bottom: 1.5rem;">
+            <h1>Tu bienestar,<br>nuestra esencia.</h1>
+            <p>Relájate, desconecta y déjate consentir con tratamientos diseñados especialmente para ti.</p>
+            <a href="#reservar" class="btn btn-gold">Reservar Cita</a>
+        </div>
+    </section>
+
+    <!-- SERVICIOS -->
+    <section id="servicios">
+        <h2>Nuestros Servicios</h2>
+        <div class="services-grid">
+            <div class="service-card">
+                <div class="service-icon"><i class="fas fa-spa"></i></div>
+                <h3>Faciales</h3>
+                <p>Tratamientos faciales personalizados</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon"><i class="fas fa-hands"></i></div>
+                <h3>Masajes Relajantes</h3>
+                <p>Masajes terapéuticos y relajantes</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon"><i class="fas fa-gem"></i></div>
+                <h3>Uñas & Gelish</h3>
+                <p>Manicura y pedicura profesional</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon"><i class="fas fa-eye"></i></div>
+                <h3>Pestañas</h3>
+                <p>Extensiones y lifting de pestañas</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon"><i class="fas fa-child"></i></div>
+                <h3>Spa Corporal</h3>
+                <p>Tratamientos corporales completos</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon"><i class="fas fa-seedling"></i></div>
+                <h3>Depilación</h3>
+                <p>Depilación con cera y otros métodos</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- RESERVA -->
+    <section id="reservar" class="booking">
+        <h2>Reserva tu Cita</h2>
+        <div class="form-container">
+            <form id="bookingForm">
+                <input type="text" id="nombre" placeholder="Nombre completo" required>
+                
+                <select id="servicio" required>
+                    <option value="">Selecciona un servicio</option>
+                    <option value="Facial">Facial</option>
+                    <option value="Masaje Relajante">Masaje Relajante</option>
+                    <option value="Uñas y Gelish">Uñas y Gelish</option>
+                    <option value="Extensiones de Pestañas">Extensiones de Pestañas</option>
+                    <option value="Spa Corporal">Spa Corporal</option>
+                    <option value="Depilación">Depilación</option>
+                </select>
+                
+                <input type="date" id="fecha" required>
+                <input type="time" id="hora" required>
+                
+                <textarea id="mensaje" rows="3" placeholder="Comentarios adicionales (opcional)"></textarea>
+                
+                <button type="submit" class="submit-btn">
+                    <i class="fab fa-whatsapp"></i> Enviar por WhatsApp
+                </button>
+            </form>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer id="contacto">
+        <div class="logo" style="justify-content: center; margin-bottom: 1rem;">
+            <img src="logo.png" alt="SereniLuxe" style="height: 80px;">
+        </div>
+        <p><strong>SERENILUXE SPA & BELLEZA</strong></p>
+        <p>Tu espacio de paz y belleza en Coahuila</p>
+        
+        <div class="gold-line"></div>
+        
+        <p>📍 Coahuila, México</p>
+        <p>📞 <a href="tel:+528714122593" style="color: #d4af88;">+52 871 412 2593</a></p>
+        
+        <a href="https://wa.me/528714122593" target="_blank" style="margin-top: 2rem;" class="btn btn-whatsapp">
+            <i class="fab fa-whatsapp"></i> Escríbenos por WhatsApp
+        </a>
+        
+        <p style="margin-top: 3rem; opacity: 0.7; font-size: 0.9rem;">
+            © 2026 SereniLuxe • Todos los derechos reservados
+        </p>
+    </footer>
+
+    <script>
+        // Hamburger Menu
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.getElementById('navLinks');
+        
+        hamburger.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+        
+        // Formulario WhatsApp
+        document.getElementById('bookingForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const nombre = document.getElementById('nombre').value.trim();
+            const servicio = document.getElementById('servicio').value;
+            const fecha = document.getElementById('fecha').value;
+            const hora = document.getElementById('hora').value;
+            const mensajeExtra = document.getElementById('mensaje').value.trim();
+            
+            let mensaje = `Hola SereniLuxe, quiero agendar una cita `;
+            
+            if (nombre) mensaje += `a nombre de *${nombre}* `;
+            if (servicio) mensaje += `para un *${servicio}* `;
+            if (fecha) mensaje += `el día *${fecha}* `;
+            if (hora) mensaje += `a las *${hora}* `;
+            
+            if (mensajeExtra) mensaje += `\n\nComentario: ${mensajeExtra}`;
+            
+            const mensajeCodificado = encodeURIComponent(mensaje);
+            window.open(`https://wa.me/528714122593?text=${mensajeCodificado}`, '_blank');
+        });
+        
+        // Fecha mínima (hoy)
+        const today = new Date().toISOString().split('T')[0];
+        document.getElementById('fecha').setAttribute('min', today);
+    </script>
+</body>
+</html>
