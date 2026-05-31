@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SereniLuxe Spa & Belleza | Torreon Coahuila</title>
+    <title>SereniLuxe Spa & Belleza | Torreón Coahuila</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <style>
         :root {
@@ -12,11 +12,7 @@
             --dark: #3a2f2f;
         }
         
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
         
         body {
             font-family: 'Playfair Display', serif;
@@ -24,8 +20,7 @@
             color: var(--dark);
             line-height: 1.6;
         }
-        
-        /* HEADER */
+
         header {
             background: rgba(248, 241, 233, 0.98);
             backdrop-filter: blur(10px);
@@ -45,46 +40,12 @@
             align-items: center;
         }
         
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-        
-        .logo img {
-            height: 55px;
-        }
-        
-        .nav-links {
-            display: flex;
-            gap: 2rem;
-            list-style: none;
-        }
-        
-        .nav-links a {
-            text-decoration: none;
-            color: var(--dark);
-            font-weight: 500;
-            transition: color 0.3s;
-        }
-        
-        .nav-links a:hover {
-            color: var(--gold);
-        }
-        
-        /* Hamburger Menu */
-        .hamburger {
-            display: none;
-            font-size: 1.8rem;
-            cursor: pointer;
-            color: var(--dark);
-        }
-        
-        /* HERO */
+        .logo img { height: 55px; }
+        .hamburger { display: none; font-size: 1.8rem; cursor: pointer; }
+
         .hero {
             min-height: 100vh;
-            background: linear-gradient(rgba(0,0,0,0.35), rgba(0,0,0,0.45)), 
-                        url('https://images.unsplash.com/photo-1600335895229-0e8d0d7f5e3c?ixlib=rb-4.0.3&auto=format&fit=crop&q=80') center/cover no-repeat;
+            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://images.unsplash.com/photo-1600335895229-0e8d0d7f5e3c?ixlib=rb-4.0.3&auto=format&fit=crop&q=80') center/cover;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -92,23 +53,7 @@
             color: white;
             padding-top: 80px;
         }
-        
-        .hero-content {
-            max-width: 700px;
-            padding: 2rem 5%;
-        }
-        
-        .hero h1 {
-            font-size: clamp(2.2rem, 8vw, 3.8rem);
-            margin-bottom: 1rem;
-            line-height: 1.1;
-        }
-        
-        .hero p {
-            font-size: clamp(1.1rem, 4vw, 1.4rem);
-            margin-bottom: 2rem;
-        }
-        
+
         .btn {
             padding: 14px 32px;
             border-radius: 50px;
@@ -120,154 +65,143 @@
             transition: all 0.3s;
         }
         
-        .btn-gold {
-            background: var(--gold);
-            color: white;
-        }
-        
-        .btn-whatsapp {
-            background: #25D366;
-            color: white;
-        }
-        
-        .btn:hover {
-            transform: translateY(-5px);
-        }
-        
-        /* SECTIONS */
-        section {
-            padding: 80px 5%;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-        
-        h2 {
-            text-align: center;
-            font-size: clamp(2rem, 6vw, 2.8rem);
-            margin-bottom: 3rem;
-            color: var(--dark);
-        }
-        
+        .btn-gold { background: var(--gold); color: white; }
+        .btn-whatsapp { background: #25D366; color: white; }
+
+        section { padding: 80px 5%; max-width: 1200px; margin: 0 auto; }
+        h2 { text-align: center; font-size: clamp(2rem, 6vw, 2.8rem); margin-bottom: 3rem; }
+
         /* Servicios */
         .services-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-            gap: 1.5rem;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
         }
         
         .service-card {
             background: white;
-            padding: 2rem 1.5rem;
             border-radius: 20px;
-            text-align: center;
+            overflow: hidden;
             box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            cursor: pointer;
             transition: all 0.3s;
         }
         
         .service-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0,0,0,0.12);
+            transform: translateY(-12px);
+            box-shadow: 0 20px 35px rgba(0,0,0,0.15);
         }
         
-        .service-icon {
-            width: 75px;
-            height: 75px;
-            background: var(--gold);
-            color: white;
-            border-radius: 50%;
-            display: flex;
+        .service-card img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+        }
+        
+        .service-info { padding: 1.5rem; text-align: center; }
+
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: rgba(0,0,0,0.85);
+            z-index: 2000;
             align-items: center;
             justify-content: center;
-            margin: 0 auto 1.5rem;
-            font-size: 2.2rem;
         }
         
-        /* Formulario */
-        .booking {
-            background: linear-gradient(135deg, #f8f1e9, #e8d9c9);
-        }
-        
-        .form-container {
-            max-width: 650px;
-            margin: 0 auto;
+        .modal-content {
             background: white;
-            padding: 2.5rem 2rem;
-            border-radius: 25px;
-            box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+            max-width: 500px;
+            width: 90%;
+            border-radius: 20px;
+            overflow: hidden;
         }
         
-        form {
+        .modal-content img {
+            width: 100%;
+            height: 280px;
+            object-fit: cover;
+        }
+        
+        .modal-body { padding: 1.8rem; }
+        .price-duration {
             display: flex;
-            flex-direction: column;
-            gap: 1.4rem;
+            justify-content: space-between;
+            margin: 1.2rem 0;
+            padding: 1rem;
+            background: #f8f1e9;
+            border-radius: 12px;
         }
         
-        input, select, textarea {
-            padding: 15px 18px;
+        .add-btn {
+            width: 100%;
+            padding: 14px;
+            background: var(--gold);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            cursor: pointer;
+        }
+
+        /* Servicios Seleccionados - MEJORADO */
+        #selected-services {
+            margin-top: 4rem;
+            background: white;
+            padding: 2.5rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        
+        .selected-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 12px 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        .booking-fields {
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 2px solid #f0e6d9;
+        }
+        
+        input, textarea {
+            width: 100%;
+            padding: 14px;
+            margin-bottom: 1rem;
             border: 1px solid #ddd;
             border-radius: 12px;
             font-size: 1.05rem;
         }
-        
-        .submit-btn {
-            background: var(--gold);
-            color: white;
-            padding: 16px;
-            font-size: 1.2rem;
-            cursor: pointer;
-            border: none;
-            border-radius: 50px;
-            margin-top: 10px;
-        }
-        
-        /* Footer */
-        footer {
-            background: var(--dark);
-            color: #f8f1e9;
-            text-align: center;
-            padding: 3rem 5%;
-        }
-        
-        .gold-line {
-            height: 3px;
-            background: linear-gradient(to right, transparent, var(--gold), transparent);
-            margin: 2rem 0;
-        }
-        
+
         /* Responsive */
         @media (max-width: 768px) {
-            .nav-links {
-                display: none;
-                position: absolute;
-                top: 100%;
-                left: 0;
-                width: 100%;
-                background: rgba(248, 241, 233, 0.98);
-                flex-direction: column;
-                padding: 1rem 0;
-                box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            .hamburger { display: block; }
+            .nav-links { 
+                display: none; 
+                position: absolute; 
+                top: 100%; 
+                left: 0; 
+                width: 100%; 
+                background: rgba(248, 241, 233, 0.98); 
+                flex-direction: column; 
+                padding: 1rem; 
             }
-            
-            .nav-links.active {
-                display: flex;
-            }
-            
-            .hamburger {
-                display: block;
-            }
-            
-            .hero {
-                min-height: 85vh;
-            }
+            .nav-links.active { display: flex; }
         }
     </style>
 </head>
 <body>
+
     <!-- HEADER -->
     <header>
         <nav>
             <div class="logo">
-                <img src="logo.png" alt="SereniLuxe Logo">
+                <img src="logo.png" alt="SereniLuxe">
                 <div>
                     <h2 style="font-size: 1.7rem; margin:0;">SERENILUXE</h2>
                     <p style="font-size: 0.85rem; color: #d4af88; margin:0;">SPA & BELLEZA</p>
@@ -277,8 +211,6 @@
             <ul class="nav-links" id="navLinks">
                 <li><a href="#inicio">Inicio</a></li>
                 <li><a href="#servicios">Servicios</a></li>
-                <li><a href="#reservar">Reservar</a></li>
-                <li><a href="#contacto">Contacto</a></li>
             </ul>
             
             <div style="display:flex; gap:10px; align-items:center;">
@@ -290,133 +222,187 @@
         </nav>
     </header>
 
-    <!-- HERO -->
+    <!-- giro -->
     <section id="inicio" class="hero">
-        <div class="hero-content">
-            <img src="logo.png" alt="SereniLuxe" style="height: 110px; margin-bottom: 1.5rem;">
+        <div style="text-align:center; max-width:700px; padding:2rem 5%;">
+            <img src="logo.png" alt="SereniLuxe" style="height:110px; margin-bottom:1.5rem;">
             <h1>Tu bienestar,<br>nuestra esencia.</h1>
-            <p>Relájate, desconecta y déjate consentir con tratamientos diseñados especialmente para ti.</p>
-            <a href="#reservar" class="btn btn-gold">Reservar Cita</a>
+            <p>Relájate, desconecta y déjate consentir.</p>
+            <a href="#servicios" class="btn btn-gold">Ver Servicios</a>
         </div>
     </section>
 
     <!-- SERVICIOS -->
     <section id="servicios">
         <h2>Nuestros Servicios</h2>
-        <div class="services-grid">
-            <div class="service-card">
-                <div class="service-icon"><i class="fas fa-spa"></i></div>
-                <h3>Faciales</h3>
-                <p>Tratamientos faciales personalizados</p>
-            </div>
-            <div class="service-card">
-                <div class="service-icon"><i class="fas fa-hands"></i></div>
-                <h3>Masajes</h3>
-                <p>Masajes</p>
-            </div>
-            <div class="service-card">
-                <div class="service-icon"><i class="fas fa-gem"></i></div>
-                <h3>maquillaje</h3>
-                <p>Maquillaje profesional</p>
-            </div>
-            <div class="service-card">
-                <div class="service-icon"><i class="fas fa-eye"></i></div>
-                <h3>Plus head spa</h3>
-                <p>plus head</p>
-            </div>
-            <div class="service-card">
-                <div class="service-icon"><i class="fas fa-child"></i></div>
-                <h3>Peinado</h3>
-                <p>Peinado personalizados</p>
-            </div>
-        </div>
-    </section>
+        <div class="services-grid" id="servicesGrid"></div>
 
-    <!-- RESERVA -->
-    <section id="reservar" class="booking">
-        <h2>Reserva tu Cita</h2>
-        <div class="form-container">
-            <form id="bookingForm">
+        <!-- PANEL DE RESERVACIÓN -->
+        <div id="selected-services" style="display:none;">
+            <h3>Servicios Seleccionados</h3>
+            <div id="selected-list"></div>
+
+            <div class="booking-fields">
+                <h3>Completa tus datos</h3>
                 <input type="text" id="nombre" placeholder="Nombre completo" required>
-                
-                <select id="servicio" required>
-                    <option value="">Selecciona un servicio</option>
-                    <option value="Facial">Facial</option>
-                    <option value="Masaje Relajante">Masaje</option>
-                    <option value="Uñas y Gelish">maquillaje</option>
-                    <option value="Extensiones de Pestañas">Plus head spa</option>
-                    <option value="Spa Corporal">Peinado</option>
-                </select>
-                
                 <input type="date" id="fecha" required>
                 <input type="time" id="hora" required>
-                
                 <textarea id="mensaje" rows="3" placeholder="Comentarios adicionales (opcional)"></textarea>
-                
-                <button type="submit" class="submit-btn">
-                    <i class="fab fa-whatsapp"></i> Enviar por WhatsApp
-                </button>
-            </form>
+            </div>
+
+            <button onclick="sendToWhatsApp()" class="btn btn-gold" style="width:100%; margin-top:1.5rem; padding:16px; font-size:1.2rem;">
+                <i class="fab fa-whatsapp"></i> Confirmar Cita por WhatsApp
+            </button>
         </div>
     </section>
 
-    <!-- FOOTER -->
-    <footer id="contacto">
-        <div class="logo" style="justify-content: center; margin-bottom: 1rem;">
-            <img src="logo.png" alt="SereniLuxe" style="height: 80px;">
+    <!-- MODAL -->
+    <div class="modal" id="serviceModal">
+        <div class="modal-content">
+            <img id="modalImage" src="" alt="">
+            <div class="modal-body">
+                <h2 id="modalTitle"></h2>
+                <p id="modalDescription"></p>
+                
+                <div class="price-duration">
+                    <div><strong>Precio:</strong> <span id="modalPrice"></span></div>
+                    <div><strong>Duración:</strong> <span id="modalDuration"></span></div>
+                </div>
+                
+                <button class="add-btn" onclick="addCurrentService()">
+                    <i class="fas fa-plus"></i> Añadir este servicio
+                </button>
+                <button onclick="closeModal()" style="margin-top:10px; width:100%; padding:12px; background:none; border:1px solid #ccc; border-radius:50px;">
+                    Cerrar
+                </button>
+            </div>
         </div>
+    </div>
+
+    <footer style="background:var(--dark); color:#f8f1e9; text-align:center; padding:3rem 5%;">
+        <img src="logo.png" alt="SereniLuxe" style="height:70px; margin-bottom:1rem;">
         <p><strong>SERENILUXE SPA & BELLEZA</strong></p>
-        <p>Tu espacio de paz y belleza en Torreon Coahuila</p>
-        
-        <div class="gold-line"></div>
-        
-        <p>📍 Torreon Coahuila, México</p>
-        <p>📞 <a href="tel:+528714122593" style="color: #d4af88;">+52 871 412 2593</a></p>
-        
-        <a href="https://wa.me/528714122593" target="_blank" style="margin-top: 2rem;" class="btn btn-whatsapp">
-            <i class="fab fa-whatsapp"></i> Escríbenos por WhatsApp
-        </a>
-        
-        <p style="margin-top: 3rem; opacity: 0.7; font-size: 0.9rem;">
-            © 2026 SereniLuxe • Todos los derechos reservados
-        </p>
+        <p>Torreón, Coahuila </p>
     </footer>
 
     <script>
-        // Hamburger Menu
-        const hamburger = document.getElementById('hamburger');
-        const navLinks = document.getElementById('navLinks');
-        
-        hamburger.addEventListener('click', () => {
-            navLinks.classList.toggle('active');
-        });
-        
-        // Formulario WhatsApp
-        document.getElementById('bookingForm').addEventListener('submit', function(e) {
-            e.preventDefault();
+        const services = [
+            { id: 1, name: "Faciales", image: "faciales.png", description: "Tratamiento facial", price: "$850", duration: "60 minutos" },
+            { id: 2, name: "Masajes ", image: "masajes.png", description: "Masaje", price: "$950", duration: "60 minutos" },
+            { id: 3, name: "Maquillaje Profesional", image: "maquillaje.png", description: "Maquiyaje", price: "$650", duration: "45 minutos" },
+            { id: 4, name: "Plus Head Spa", image: "plusheadspa.png", description: "Txt", price: "$1,200", duration: "75 minutos" },
+            { id: 5, name: "Peinado", image: "peinado.png", description: "Peinados", price: "$550", duration: "40 minutos" }
+        ];
+
+        let selectedServices = [];
+
+        function renderServices() {
+            const container = document.getElementById('servicesGrid');
+            container.innerHTML = '';
             
+            services.forEach(service => {
+                const card = document.createElement('div');
+                card.className = 'service-card';
+                card.innerHTML = `
+                    <img src="${service.image}" alt="${service.name}">
+                    <div class="service-info">
+                        <h3>${service.name}</h3>
+                        <p>${service.description.substring(0, 85)}...</p>
+                    </div>
+                `;
+                card.onclick = () => showModal(service);
+                container.appendChild(card);
+            });
+        }
+
+        let currentService = null;
+        
+        function showModal(service) {
+            currentService = service;
+            document.getElementById('modalImage').src = service.image;
+            document.getElementById('modalTitle').textContent = service.name;
+            document.getElementById('modalDescription').textContent = service.description;
+            document.getElementById('modalPrice').textContent = service.price;
+            document.getElementById('modalDuration').textContent = service.duration;
+            document.getElementById('serviceModal').style.display = 'flex';
+        }
+
+        function closeModal() {
+            document.getElementById('serviceModal').style.display = 'none';
+        }
+
+        function addCurrentService() {
+            if (!currentService) return;
+            selectedServices.push(currentService);
+            updateSelectedServices();
+            closeModal();
+        }
+
+        function updateSelectedServices() {
+            const container = document.getElementById('selected-services');
+            const list = document.getElementById('selected-list');
+            list.innerHTML = '';
+            
+            if (selectedServices.length === 0) {
+                container.style.display = 'none';
+                return;
+            }
+            
+            container.style.display = 'block';
+            
+            selectedServices.forEach((service, index) => {
+                const div = document.createElement('div');
+                div.className = 'selected-item';
+                div.innerHTML = `
+                    <span>${service.name} — ${service.price}</span>
+                    <span onclick="removeService(${index})" style="color:red; cursor:pointer; font-size:1.4rem;">×</span>
+                `;
+                list.appendChild(div);
+            });
+        }
+
+        function removeService(index) {
+            selectedServices.splice(index, 1);
+            updateSelectedServices();
+        }
+
+        function sendToWhatsApp() {
             const nombre = document.getElementById('nombre').value.trim();
-            const servicio = document.getElementById('servicio').value;
             const fecha = document.getElementById('fecha').value;
             const hora = document.getElementById('hora').value;
             const mensajeExtra = document.getElementById('mensaje').value.trim();
+
+            if (!nombre || !fecha || !hora) {
+                alert("Por favor completa tu nombre, fecha y hora.");
+                return;
+            }
+
+            let mensaje = `Hola SereniLuxe, quiero agendar una cita a nombre de *${nombre}*.\n\n`;
+            mensaje += `📅 Fecha: ${fecha}\n`;
+            mensaje += `⏰ Hora: ${hora}\n\n`;
+            mensaje += `Servicios solicitados:\n`;
             
-            let mensaje = `Hola SereniLuxe, quiero agendar una cita `;
+            selectedServices.forEach(s => {
+                mensaje += `• ${s.name} - ${s.price} (${s.duration})\n`;
+            });
             
-            if (nombre) mensaje += `a nombre de *${nombre}* `;
-            if (servicio) mensaje += `para un *${servicio}* `;
-            if (fecha) mensaje += `el día *${fecha}* `;
-            if (hora) mensaje += `a las *${hora}* `;
-            
-            if (mensajeExtra) mensaje += `\n\nComentario: ${mensajeExtra}`;
-            
-            const mensajeCodificado = encodeURIComponent(mensaje);
-            window.open(`https://wa.me/528714122593?text=${mensajeCodificado}`, '_blank');
+            if (mensajeExtra) mensaje += `\nComentarios: ${mensajeExtra}`;
+
+            const encoded = encodeURIComponent(mensaje);
+            window.open(`https://wa.me/528714122593?text=${encoded}`, '_blank');
+        }
+
+        // carrito
+        document.getElementById('hamburger').addEventListener('click', () => {
+            document.getElementById('navLinks').classList.toggle('active');
         });
-        
-        // Fecha mínima (hoy)
-        const today = new Date().toISOString().split('T')[0];
-        document.getElementById('fecha').setAttribute('min', today);
+
+        // Inicializar página
+        window.onload = () => {
+            renderServices();
+            const today = new Date().toISOString().split('T')[0];
+            document.getElementById('fecha').setAttribute('min', today);
+        };
     </script>
 </body>
 </html>
