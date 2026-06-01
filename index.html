@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>SereniLuxe Spa & Belleza | Torreón Coahuila</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <style>
@@ -19,6 +19,7 @@
             background-color: var(--beige);
             color: var(--dark);
             line-height: 1.6;
+            font-size: 16px;
         }
 
         header {
@@ -40,12 +41,31 @@
             align-items: center;
         }
         
-        .logo img { height: 55px; }
-        .hamburger { display: none; font-size: 1.8rem; cursor: pointer; }
+        .logo img { height: 50px; }
+        .hamburger { 
+            display: block; 
+            font-size: 1.8rem; 
+            cursor: pointer; 
+            padding: 5px;
+        }
+
+        .nav-links { 
+            display: none; 
+            position: absolute; 
+            top: 100%; 
+            left: 0; 
+            width: 100%; 
+            background: rgba(248, 241, 233, 0.98); 
+            flex-direction: column; 
+            padding: 1rem; 
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        .nav-links.active { display: flex; }
 
         .hero {
             min-height: 100vh;
-            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://images.unsplash.com/photo-1600335895229-0e8d0d7f5e3c?ixlib=rb-4.0.3&auto=format&fit=crop&q=80') center/cover;
+            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), 
+                        url('https://images.unsplash.com/photo-1600335895229-0e8d0d7f5e3c?ixlib=rb-4.0.3&auto=format&fit=crop&q=80') center/cover;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -63,22 +83,31 @@
             align-items: center;
             gap: 10px;
             transition: all 0.3s;
+            font-size: 1.1rem;
         }
         
         .btn-gold { background: var(--gold); color: white; }
         .btn-whatsapp { background: #25D366; color: white; }
 
-        section { padding: 80px 5%; max-width: 1200px; margin: 0 auto; }
-        h2 { text-align: center; font-size: clamp(2rem, 6vw, 2.8rem); margin-bottom: 3rem; }
-
-        /* Servicios */
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
+        section { 
+            padding: 70px 5%; 
+            max-width: 1200px; 
+            margin: 0 auto; 
         }
-        
-        .service-card {
+        h2 { 
+            text-align: center; 
+            font-size: clamp(2rem, 7vw, 2.8rem); 
+            margin-bottom: 2.5rem; 
+        }
+
+        /* Categorías */
+        .categories-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .category-card {
             background: white;
             border-radius: 20px;
             overflow: hidden;
@@ -87,88 +116,106 @@
             transition: all 0.3s;
         }
         
-        .service-card:hover {
-            transform: translateY(-12px);
-            box-shadow: 0 20px 35px rgba(0,0,0,0.15);
+        .category-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
         }
-        
-        .service-card img {
+
+        .category-card img {
             width: 100%;
-            height: 220px;
+            height: 200px;
             object-fit: cover;
         }
-        
-        .service-info { padding: 1.5rem; text-align: center; }
 
-        /* Modal */
-        .modal {
-            display: none;
-            position: fixed;
-            top: 0; left: 0;
-            width: 100%; height: 100%;
-            background: rgba(0,0,0,0.85);
-            z-index: 2000;
-            align-items: center;
-            justify-content: center;
+        .category-info {
+            padding: 1.2rem;
+            text-align: center;
         }
-        
-        .modal-content {
+
+        /* Tratamientos */
+        .treatments-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .treatment-card {
             background: white;
-            max-width: 500px;
-            width: 90%;
             border-radius: 20px;
             overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
         }
-        
-        .modal-content img {
+
+        .treatment-card img {
             width: 100%;
-            height: 280px;
+            height: 210px;
             object-fit: cover;
         }
-        
-        .modal-body { padding: 1.8rem; }
-        .price-duration {
-            display: flex;
-            justify-content: space-between;
-            margin: 1.2rem 0;
-            padding: 1rem;
-            background: #f8f1e9;
-            border-radius: 12px;
+
+        .treatment-info {
+            padding: 1.3rem;
+            text-align: center;
         }
-        
-        .add-btn {
+
+        .treatment-info h4 {
+            margin-bottom: 8px;
+            font-size: 1.25rem;
+        }
+
+        .add-to-cart {
             width: 100%;
             padding: 14px;
             background: var(--gold);
             color: white;
             border: none;
             border-radius: 50px;
-            font-size: 1.1rem;
+            margin-top: 12px;
             cursor: pointer;
+            font-size: 1.05rem;
+            font-weight: bold;
         }
 
-        /* Servicios Seleccionados - MEJORADO */
-        #selected-services {
-            margin-top: 4rem;
+        .quantity-controls {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 10px;
+        }
+
+        .quantity-btn {
+            width: 38px;
+            height: 38px;
+            border: 2px solid var(--gold);
             background: white;
-            padding: 2.5rem;
+            color: var(--gold);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.4rem;
+            font-weight: bold;
+            cursor: pointer;
+            user-select: none;
+        }
+
+        /* Selected Services */
+        #selected-services {
+            margin-top: 3rem;
+            background: white;
+            padding: 2rem;
             border-radius: 20px;
             box-shadow: 0 10px 30px rgba(0,0,0,0.1);
         }
-        
+
         .selected-item {
             display: flex;
             justify-content: space-between;
-            padding: 12px 0;
+            align-items: center;
+            padding: 14px 0;
             border-bottom: 1px solid #eee;
         }
 
-        .booking-fields {
-            margin-top: 2rem;
-            padding-top: 2rem;
-            border-top: 2px solid #f0e6d9;
-        }
-        
         input, textarea {
             width: 100%;
             padding: 14px;
@@ -179,19 +226,10 @@
         }
 
         /* Responsive */
-        @media (max-width: 768px) {
-            .hamburger { display: block; }
-            .nav-links { 
-                display: none; 
-                position: absolute; 
-                top: 100%; 
-                left: 0; 
-                width: 100%; 
-                background: rgba(248, 241, 233, 0.98); 
-                flex-direction: column; 
-                padding: 1rem; 
-            }
-            .nav-links.active { display: flex; }
+        @media (max-width: 480px) {
+            section { padding: 60px 5%; }
+            .treatment-card img { height: 180px; }
+            .btn { padding: 13px 28px; font-size: 1rem; }
         }
     </style>
 </head>
@@ -203,8 +241,8 @@
             <div class="logo">
                 <img src="logo.png" alt="SereniLuxe">
                 <div>
-                    <h2 style="font-size: 1.7rem; margin:0;">SERENILUXE</h2>
-                    <p style="font-size: 0.85rem; color: #d4af88; margin:0;">SPA & BELLEZA</p>
+                    <h2 style="font-size: 1.6rem; margin:0;">SERENILUXE</h2>
+                    <p style="font-size: 0.8rem; color: #d4af88; margin:0;">SPA & BELLEZA</p>
                 </div>
             </div>
             
@@ -214,7 +252,7 @@
             </ul>
             
             <div style="display:flex; gap:10px; align-items:center;">
-                <a href="https://wa.me/528714122593" target="_blank" class="btn btn-whatsapp">
+                <a href="https://wa.me/528714122593" target="_blank" class="btn btn-whatsapp" style="padding:10px 14px;">
                     <i class="fab fa-whatsapp"></i>
                 </a>
                 <div class="hamburger" id="hamburger">☰</div>
@@ -222,12 +260,12 @@
         </nav>
     </header>
 
-    <!-- giro -->
+    <!-- HERO -->
     <section id="inicio" class="hero">
         <div style="text-align:center; max-width:700px; padding:2rem 5%;">
-            <img src="logo.png" alt="SereniLuxe" style="height:110px; margin-bottom:1.5rem;">
-            <h1>Tu bienestar,<br>nuestra esencia.</h1>
-            <p>Relájate, desconecta y déjate consentir.</p>
+            <img src="logo.png" alt="SereniLuxe" style="height:100px; margin-bottom:1.5rem;">
+            <h1 style="font-size: clamp(2.2rem, 8vw, 3rem);">Tu bienestar,<br>nuestra esencia.</h1>
+            <p style="font-size: 1.1rem; margin:1rem 0;">Relájate, desconecta y déjate consentir.</p>
             <a href="#servicios" class="btn btn-gold">Ver Servicios</a>
         </div>
     </section>
@@ -235,14 +273,25 @@
     <!-- SERVICIOS -->
     <section id="servicios">
         <h2>Nuestros Servicios</h2>
-        <div class="services-grid" id="servicesGrid"></div>
+        
+        <div class="categories-grid" id="categoriesGrid"></div>
 
-        <!-- PANEL DE RESERVACIÓN -->
+        <!-- Tratamientos -->
+        <div id="treatmentsSection" style="display: none;">
+            <h3 id="categoryTitle" style="text-align:center; margin: 2.5rem 0 2rem; font-size: 1.8rem;"></h3>
+            <div class="treatments-grid" id="treatmentsGrid"></div>
+            
+            <button onclick="backToCategories()" class="btn btn-gold" style="margin: 2rem auto; display:block;">
+                ← Volver a Categorías
+            </button>
+        </div>
+
+        <!-- Servicios Seleccionados -->
         <div id="selected-services" style="display:none;">
             <h3>Servicios Seleccionados</h3>
             <div id="selected-list"></div>
 
-            <div class="booking-fields">
+            <div class="booking-fields" style="margin-top: 2.5rem;">
                 <h3>Completa tus datos</h3>
                 <input type="text" id="nombre" placeholder="Nombre completo" required>
                 <input type="date" id="fecha" required>
@@ -256,106 +305,190 @@
         </div>
     </section>
 
-    <!-- MODAL -->
-    <div class="modal" id="serviceModal">
-        <div class="modal-content">
-            <img id="modalImage" src="" alt="">
-            <div class="modal-body">
-                <h2 id="modalTitle"></h2>
-                <p id="modalDescription"></p>
-                
-                <div class="price-duration">
-                    <div><strong>Precio:</strong> <span id="modalPrice"></span></div>
-                    <div><strong>Duración:</strong> <span id="modalDuration"></span></div>
-                </div>
-                
-                <button class="add-btn" onclick="addCurrentService()">
-                    <i class="fas fa-plus"></i> Añadir este servicio
-                </button>
-                <button onclick="closeModal()" style="margin-top:10px; width:100%; padding:12px; background:none; border:1px solid #ccc; border-radius:50px;">
-                    Cerrar
-                </button>
-            </div>
-        </div>
-    </div>
-
     <footer style="background:var(--dark); color:#f8f1e9; text-align:center; padding:3rem 5%;">
         <img src="logo.png" alt="SereniLuxe" style="height:70px; margin-bottom:1rem;">
         <p><strong>SERENILUXE SPA & BELLEZA</strong></p>
-        <p>Torreón, Coahuila </p>
+        <p>Torreón, Coahuila</p>
     </footer>
 
     <script>
-        const services = [
-            { id: 1, name: "Faciales", image: "faciales.png", description: "Tratamiento facial", price: "$850", duration: "60 minutos" },
-            { id: 2, name: "Masajes ", image: "masajes.png", description: "Masaje", price: "$950", duration: "60 minutos" },
-            { id: 3, name: "Maquillaje Profesional", image: "maquillaje.png", description: "Maquiyaje", price: "$650", duration: "45 minutos" },
-            { id: 4, name: "Plus Head Spa", image: "plusheadspa.png", description: "Txt", price: "$1,200", duration: "75 minutos" },
-            { id: 5, name: "Peinado", image: "peinado.png", description: "Peinados", price: "$550", duration: "40 minutos" }
+        const categories = [
+            {
+                id: 1,
+                name: "Faciales",
+                image: "faciales.png",
+                treatments: [
+                    { id: 101, name: "Facial sencillo", price: "$900", duration: "50 min", description: "txt" },
+                    { id: 102, name: "Facial con mixologia", price: "$1,100", duration: "70 min", description: "txt" },
+                    { id: 103, name: "dermaplaning", price: "$1,000", duration: "75 min", description: "txt" }
+                ]
+            },
+            {
+                id: 2,
+                name: "Masajes",
+                image: "masajes.png",
+                treatments: [
+                    { id: 201, name: "Masaje Relajante", price: "$1,100", duration: "90 min", description: "txt" },
+                    { id: 202, name: "Masaje linfatico manual", price: "$950", duration: "60 min", description: "txt" }
+                ]
+            },
+            {
+                id: 3,
+                name: "Maquillaje",
+                image: "maquillaje.png",
+                treatments: [
+                    { id: 301, name: "Maquillaje Social", price: "$800", duration: "45 min", description: "txt" },
+                    { id: 302, name: "Maquillaje nupcial", price: "$3,000", duration: "120 min", description: "txt" },
+                    { id: 303, name: "Maquillaje xv", price: "$2,500", duration: "120 min", description: "txt" }
+                ]
+            },
+            {
+                id: 4,
+                name: "Plus Head Spa",
+                image: "plusheadspa.png",
+                treatments: [
+                    { id: 401, name: "Head Spa Básico", price: "$800", duration: "45 min", description: "txt" },
+                    { id: 402, name: "Head Spa + masaje relajante/drenaje linfatico", price: "$1,500", duration: "90 min", description: "Txt" }
+                ]
+            },
+            {
+                id: 5,
+                name: "Peinado",
+                image: "peinado.png",
+                treatments: [
+                    { id: 501, name: "Pistoleado", price: "$400", duration: "40 min", description: "txt" },
+                    { id: 502, name: "ondas", price: "$350", duration: "80 min", description: "txt" },
+                    { id: 503, name: "Planchado", price: "$350", duration: "50 min", description: "txt" },
+                    { id: 504, name: "Recogido", price: "$800", duration: "55 min", description: "txt" },
+                    { id: 505, name: "Peinado Sencillo", price: "$500", duration: "55 min", description: "txt" }
+                ]
+            },
+            {
+                id: 6,
+                name: "Uñas",
+                image: "unas.png",
+                treatments: [
+                    { id: 601, name: "Rubber", price: "$350", duration: "40 min", description: "txt" },
+                    { id: 602, name: "Diseño extra", price: "$50", duration: "20 min", description: "dieseño" },
+                    { id: 603, name: "Gelish", price: "$250", duration: "55 min", description: "Tratamiento completo" },
+                    { id: 604, name: "Uñas Acrílicas", price: "$500", duration: "120 min", description: "Uñas largas con acrílico" }
+                ]
+            }
         ];
 
         let selectedServices = [];
 
-        function renderServices() {
-            const container = document.getElementById('servicesGrid');
+        function renderCategories() {
+            const container = document.getElementById('categoriesGrid');
             container.innerHTML = '';
-            
-            services.forEach(service => {
+
+            categories.forEach(cat => {
                 const card = document.createElement('div');
-                card.className = 'service-card';
+                card.className = 'category-card';
                 card.innerHTML = `
-                    <img src="${service.image}" alt="${service.name}">
-                    <div class="service-info">
-                        <h3>${service.name}</h3>
-                        <p>${service.description.substring(0, 85)}...</p>
+                    <img src="${cat.image}" alt="${cat.name}">
+                    <div class="category-info">
+                        <h3>${cat.name}</h3>
+                        <p>${cat.treatments.length} tratamientos</p>
                     </div>
                 `;
-                card.onclick = () => showModal(service);
+                card.onclick = () => showTreatments(cat);
                 container.appendChild(card);
             });
         }
 
-        let currentService = null;
-        
-        function showModal(service) {
-            currentService = service;
-            document.getElementById('modalImage').src = service.image;
-            document.getElementById('modalTitle').textContent = service.name;
-            document.getElementById('modalDescription').textContent = service.description;
-            document.getElementById('modalPrice').textContent = service.price;
-            document.getElementById('modalDuration').textContent = service.duration;
-            document.getElementById('serviceModal').style.display = 'flex';
+        function showTreatments(category) {
+            document.getElementById('categoriesGrid').style.display = 'none';
+            document.getElementById('treatmentsSection').style.display = 'block';
+            document.getElementById('categoryTitle').textContent = category.name;
+
+            const grid = document.getElementById('treatmentsGrid');
+            grid.innerHTML = '';
+
+            category.treatments.forEach(t => {
+                const card = document.createElement('div');
+                card.className = 'treatment-card';
+                card.innerHTML = `
+                    <img src="${category.image}" alt="${t.name}">
+                    <div class="treatment-info">
+                        <h4>${t.name}</h4>
+                        <p>${t.description || ''}</p>
+                        <strong>${t.price} • ${t.duration}</strong>
+                        
+                        <button class="add-to-cart" onclick="addToCart(${category.id}, ${t.id})">
+                            <i class="fas fa-cart-plus"></i> Agregar al carrito
+                        </button>
+                        
+                        <div class="quantity-controls" id="qty-${t.id}" style="display:none;">
+                            <div class="quantity-btn" onclick="changeQuantity(${t.id}, -1)">−</div>
+                            <span id="count-${t.id}" style="font-size:1.2rem; min-width:30px;">1</span>
+                            <div class="quantity-btn" onclick="changeQuantity(${t.id}, 1)">+</div>
+                        </div>
+                    </div>
+                `;
+                grid.appendChild(card);
+            });
         }
 
-        function closeModal() {
-            document.getElementById('serviceModal').style.display = 'none';
+        function backToCategories() {
+            document.getElementById('treatmentsSection').style.display = 'none';
+            document.getElementById('categoriesGrid').style.display = 'grid';
         }
 
-        function addCurrentService() {
-            if (!currentService) return;
-            selectedServices.push(currentService);
+        function addToCart(catId, treatId) {
+            const category = categories.find(c => c.id === catId);
+            const treatment = category.treatments.find(t => t.id === treatId);
+
+            const existing = selectedServices.find(item => item.treatment.id === treatId);
+
+            if (existing) {
+                existing.quantity++;
+            } else {
+                selectedServices.push({ treatment, quantity: 1 });
+            }
+
             updateSelectedServices();
-            closeModal();
+            document.getElementById(`qty-${treatId}`).style.display = 'flex';
+        }
+
+        function changeQuantity(treatId, change) {
+            const item = selectedServices.find(i => i.treatment.id === treatId);
+            if (!item) return;
+
+            item.quantity += change;
+            if (item.quantity < 1) {
+                selectedServices = selectedServices.filter(i => i.treatment.id !== treatId);
+            }
+
+            updateSelectedServices();
         }
 
         function updateSelectedServices() {
             const container = document.getElementById('selected-services');
             const list = document.getElementById('selected-list');
             list.innerHTML = '';
-            
+
             if (selectedServices.length === 0) {
                 container.style.display = 'none';
                 return;
             }
-            
+
             container.style.display = 'block';
-            
-            selectedServices.forEach((service, index) => {
+
+            selectedServices.forEach((item, index) => {
                 const div = document.createElement('div');
                 div.className = 'selected-item';
                 div.innerHTML = `
-                    <span>${service.name} — ${service.price}</span>
-                    <span onclick="removeService(${index})" style="color:red; cursor:pointer; font-size:1.4rem;">×</span>
+                    <div>
+                        <strong>${item.treatment.name}</strong><br>
+                        <small>${item.treatment.price} × ${item.quantity}</small>
+                    </div>
+                    <div style="display:flex; align-items:center; gap:12px;">
+                        <div class="quantity-btn" onclick="changeQuantity(${item.treatment.id}, -1)">−</div>
+                        <span style="font-weight:bold; min-width:25px; text-align:center;">${item.quantity}</span>
+                        <div class="quantity-btn" onclick="changeQuantity(${item.treatment.id}, 1)">+</div>
+                        <span onclick="removeService(${index})" style="color:red; font-size:1.6rem; cursor:pointer; margin-left:10px;">×</span>
+                    </div>
                 `;
                 list.appendChild(div);
             });
@@ -380,26 +513,25 @@
             let mensaje = `Hola SereniLuxe, quiero agendar una cita a nombre de *${nombre}*.\n\n`;
             mensaje += `📅 Fecha: ${fecha}\n`;
             mensaje += `⏰ Hora: ${hora}\n\n`;
-            mensaje += `Servicios solicitados:\n`;
+            mensaje += `Servicios:\n`;
             
             selectedServices.forEach(s => {
-                mensaje += `• ${s.name} - ${s.price} (${s.duration})\n`;
+                mensaje += `• ${s.treatment.name} ×${s.quantity} - ${s.treatment.price}\n`;
             });
             
             if (mensajeExtra) mensaje += `\nComentarios: ${mensajeExtra}`;
 
-            const encoded = encodeURIComponent(mensaje);
-            window.open(`https://wa.me/528714122593?text=${encoded}`, '_blank');
+            window.open(`https://wa.me/528714122593?text=${encodeURIComponent(mensaje)}`, '_blank');
         }
 
-        // carrito
+        // Hamburger Menu
         document.getElementById('hamburger').addEventListener('click', () => {
             document.getElementById('navLinks').classList.toggle('active');
         });
 
-        // Inicializar página
+        // Inicializar
         window.onload = () => {
-            renderServices();
+            renderCategories();
             const today = new Date().toISOString().split('T')[0];
             document.getElementById('fecha').setAttribute('min', today);
         };
